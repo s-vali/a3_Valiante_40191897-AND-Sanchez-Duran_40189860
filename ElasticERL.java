@@ -162,7 +162,7 @@ public class ElasticERL {
 			else
 				if(key1 > key2) { //make sure passed key1 is smaller than key2 so that range is [key1, key2]
 					int temp = 0;
-					key1 = temp;
+					temp = key1;
 					key1 = key2;
 					key2 = temp;
 				}
