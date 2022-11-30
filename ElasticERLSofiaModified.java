@@ -50,12 +50,12 @@ public class ElasticERL {
 	}
 	
 	/**
-	 * Returns 
+	 * Returns randomly generated key that should not exist in the ADT
 	 * 
 	 * @param elasticERLObj
-	 * @return long
+	 * @return int
 	 */
-	public long generate(ElasticERL elasticERLObj) {
+	public int generate(ElasticERL elasticERLObj) {
 		if(elasticERLObj.getSizeOfERL() < 1000) {
 			//Create sorted array of key values
 			ElasticAVL tree = elasticERLObj.getAvltree();
@@ -66,17 +66,17 @@ public class ElasticERL {
 			Random rand = new Random();
 			int randomIndex = rand.nextInt(elasticERLObj.getSizeOfERL()-1); //goes from 0 to size-1, used to access array at random index
 			//Determined lower and upper bounds for new generated key		
-			long keyLower = Long.parseLong(tempArray[randomIndex].getKey());
-			long keyUpper = Long.parseLong(tempArray[randomIndex+1].getKey());
+			int keyLower = Integer.parseInt(tempArray[randomIndex].getKey());
+			int keyUpper = Integer.parseInt(tempArray[randomIndex+1].getKey());
 			//Make sure the lower bound is actually lower
 			if(keyLower > keyUpper) {
-				long temp = keyLower; //keyLower is larger than keyUpper
+				int temp = keyLower; //keyLower is larger than keyUpper
 				keyLower = keyUpper;
 				keyUpper = temp;
 			}
 			//create new generated key based on lower and upper bounds
 			Random randNb = new Random();
-			long generatedKey = randNb.nextLong(keyUpper-(keyLower+1)) + (keyLower+1);
+			int generatedKey = randNb.nextInt(keyUpper-(keyLower+1)) + (keyLower+1);
 			return generatedKey;
 		}
 		else {
