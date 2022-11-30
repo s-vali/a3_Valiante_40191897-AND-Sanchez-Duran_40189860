@@ -1,20 +1,25 @@
+package Assi3;
 
+import java.util.ArrayList;
 
 public class ElasticERL {
-	
 	/*
 	 * variables and constants of ElasticERL
 	 */
 	ElasticAVL avltree = null;
-	int sizeOfERL;
-	//Doubly linked
+	int sizeOfERL;	
+	myHashTable hashtable = null;
 	
 	/*
 	 * constructor
 	 */
-	public ElasticERL(int size) {
-		avltree = new ElasticAVL();
-		//other ADT
+	public ElasticERL(int size) {	//MODIFIED THIS FUNCTION!
+		if (size<1000) {
+			avltree = new ElasticAVL();	
+		}
+		else {
+			hashtable = new myHashTable(size);	//passed size as argument for myHashTable
+		}
 		sizeOfERL = size;
 	}
 	
@@ -26,6 +31,9 @@ public class ElasticERL {
 	public int getSizeOfERL() { return sizeOfERL; }
 	public void setSizeOfERL(int sizeOfERL) { this.sizeOfERL = sizeOfERL; }
 	
+	public myHashTable getHashTable() { return hashtable;}
+	public void setHashTable(myHashTable hashtable) { this.hashtable = hashtable; }
+	
 	/*
 	 * class methods
 	 */
@@ -35,14 +43,8 @@ public class ElasticERL {
 	 * @param size
 	 * @return Object
 	 */
-	public static Object setEINThreshold(int size) {
-		if(size < 1000) {
-			return new ElasticERL(size); 
-		} 
-		else {
-			//return creation of other ADT
+	public static Object setEINThreshold(int size) {	//MAYBE WE CAN MODIFY THIS!
 			return new ElasticERL(size);
-		}	
 	}
 	
 	/**
@@ -60,8 +62,14 @@ public class ElasticERL {
 			return sortedArray;
 		} 
 		else {
-			return null; //return sequence of other ADT
+			allKeysinHash(elasticERLObj);	//see method below!
+			return null;
 		}
+	}
+	
+	//ADDED THIS METHOD FOR HASH FUNCTION!!!!!!!!!!!!!!!!!
+	public ArrayList<Integer> allKeysinHash(ElasticERL elasticERLObj){
+		return elasticERLObj.getHashTable().getAllKeys();
 	}
 	
 	/**
@@ -75,8 +83,8 @@ public class ElasticERL {
 		if(elasticERLObj.getSizeOfERL() < 1000) { //if the size set for the ADT is <1000, insert into AVL tree
 			avltree.setRoot(avltree.insert(key, avltree.getRoot(), value));
 		} 
-		else {
-			
+		else {	//size set is greater than or equal to 1000, insert into hash table
+			hashtable.put(key,value);	//inserting into hash table
 		}
 	}
 	
@@ -86,8 +94,14 @@ public class ElasticERL {
 	 * @param elasticERLObj
 	 * @param key
 	 */
-	public void remove(ElasticERL elasticERLObj, long key) {
-		//NOT DONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public void remove(ElasticERL elasticERLObj, int key) {		//changed long to int here!!!!!!
+		if(elasticERLObj.getSizeOfERL()<1000) {
+			//remove from AVL tree
+		}
+		else {
+			//remove from hash table
+			hashtable.remove(key);
+		}
 	}
 	
 	/**
@@ -97,12 +111,12 @@ public class ElasticERL {
 	 * @param key
 	 * @return String
 	 */
-	public String getValues(ElasticERL elasticERLObj, long key) {
+	public String getValues(ElasticERL elasticERLObj, int key) {	//changed it from long to int here!!!!!!!!
 		if(elasticERLObj.getSizeOfERL() < 1000) {
 			return (elasticERLObj.getAvltree().searchAVL(key, elasticERLObj.getAvltree().getRoot())).getValue();
 		} 
 		else {
-			return "";
+			return hashtable.get(key);
 		}
 	}
 	
@@ -162,7 +176,7 @@ public class ElasticERL {
 			else
 				if(key1 > key2) { //make sure passed key1 is smaller than key2 so that range is [key1, key2]
 					int temp = 0;
-					temp = key1;
+					temp = (int) key1;	
 					key1 = key2;
 					key2 = temp;
 				}
@@ -187,6 +201,5 @@ public class ElasticERL {
 
 	
 	
-	
 
-}
+}	//end of ElasticERL class
