@@ -88,7 +88,6 @@ public class myHashTable {
 	 * @param key
 	 * @param value
 	 */
-	//Time Complexity of O(1)
 	public void put(String key, String value) {
 		if (key == null || value == null) {
 			throw new IllegalArgumentException("Key or Value is null!");
@@ -121,7 +120,6 @@ public class myHashTable {
 		return key % numOfBuckets;	//hash function using modulo
 	}
 	
-	//Time Complexity of O(1)
 	/**
 	 * Given a key, it returns its value.
 	 * @param key
@@ -144,7 +142,6 @@ public class myHashTable {
 		return null;
 	}
 	
-	//Time Complexity of O(1)
 	/**
 	 * Removes key-value pair given a key.
 	 * @param key
