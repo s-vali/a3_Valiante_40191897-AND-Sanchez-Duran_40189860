@@ -15,7 +15,7 @@ public class myHashTable {
 	 * Default Constructor
 	 */
 	public myHashTable() {
-		this.numOfBuckets = 10;	//default capacity
+		this.numOfBuckets = 1001;	//default capacity
 		this.bucketArray = new HashNode[numOfBuckets];
 		this.numOfPairs = 0;
 	}
@@ -35,21 +35,21 @@ public class myHashTable {
 	 * HashNode Class
 	 */
 	private class HashNode {
-		private Integer key;
+		private String key;
 		private String value;
 		private HashNode next;	//reference to the next HashNode
 		
 		//Constructor
-		public HashNode(Integer key, String value) {
+		public HashNode(String key, String value) {
 			this.key = key;
 			this.value = value;
 		}
 		//Setters and Getters
-		public int getKey() {	
+		public String getKey() {	
 			return key;
 		}
 		
-		public void setKey(Integer key) {
+		public void setKey(String key) {
 			this.key = key;
 		}
 		
@@ -89,11 +89,12 @@ public class myHashTable {
 	 * @param value
 	 */
 	//Time Complexity of O(1)
-	public void put(Integer key, String value) {
+	public void put(String key, String value) {
 		if (key == null || value == null) {
 			throw new IllegalArgumentException("Key or Value is null!");
 		}
-		int bucketIndex = getBucketIndex(key);
+		int intKey = Integer.parseInt(key);	//converting key string to integer
+		int bucketIndex = getBucketIndex(intKey);
 		HashNode head = bucketArray[bucketIndex];
 		HashNode current = head;	
 		while(current !=null) {
@@ -126,11 +127,12 @@ public class myHashTable {
 	 * @param key
 	 * @return
 	 */
-	public String get(Integer key) {
+	public String get(String key) {
 		if (key == null) {
 			throw new IllegalArgumentException("Key is null");
 		}
-		int bucketIndex = getBucketIndex(key);
+		int intKey = Integer.parseInt(key);	//converting key string to integer
+		int bucketIndex = getBucketIndex(intKey);
 		HashNode head = bucketArray[bucketIndex];
 		HashNode current = head;
 		while (current != null) {
@@ -148,12 +150,12 @@ public class myHashTable {
 	 * @param key
 	 * @return
 	 */
-	public String remove(Integer key) {
+	public String remove(String key) {
 		if (key == null) {
 			throw new IllegalArgumentException("Key is null");
 		}
-		
-		int bucketIndex= getBucketIndex(key);
+		int intKey = Integer.parseInt(key);	//converting key string to integer
+		int bucketIndex= getBucketIndex(intKey);
 		HashNode head = bucketArray[bucketIndex];
 		HashNode prev = null;
 		HashNode current = head;
@@ -183,43 +185,167 @@ public class myHashTable {
 	 * Returns all the keys of the hash table
 	 * @param obj
 	 */
-	public ArrayList<Integer> getAllKeys() {
-		ArrayList<Integer> listOfKeys = new ArrayList<Integer>();
+	public ArrayList<String> getAllKeys() {
+		ArrayList<String> listOfKeys = new ArrayList<String>();		
 		for (int i=0; i < numOfBuckets; i++) {	//iterating through entire array
 			HashNode head = bucketArray[i];
 			HashNode current = head;
 			while (current != null) {
-				int currentKey= current.getKey();
+				String currentKey= current.getKey();
 				//System.out.println(currentKey);
+				//int intCurrentKey = Integer.parseInt(currentKey);	//changing strings of keys into integers before putting in list and sorting
 				listOfKeys.add(currentKey);
 				current = current.next;
 			} //end of while
 		} //end of for-loop
 		Collections.sort(listOfKeys);
 		return listOfKeys;
-	} 
+	}
+	
+	/**
+	 * Returns the successor (the next key) of any given key
+	 * @param key
+	 * @return
+	 */
+	public String getNextKey(String key) {
+		//Getting every key and sorting it
+		ArrayList<String> listOfKeys = new ArrayList<String>();
+		for (int i=0; i < numOfBuckets; i++) {	//iterating through entire array
+			HashNode head = bucketArray[i];
+			HashNode current = head;
+			while (current != null) {
+				String currentKey= current.getKey();
+				//int intCurrentKey = Integer.parseInt(currentKey);	//changing strings of keys into integers before putting in list and sorting
+				listOfKeys.add(currentKey);
+				current = current.next;
+			} 
+		} 
+		Collections.sort(listOfKeys);	//sorting
+		//Getting successor of given key
+		if (listOfKeys.contains(key)) {
+			int indexOfKey = listOfKeys.indexOf(key);
+			int indexOfNextKey = indexOfKey +1;
+			if (indexOfNextKey >= listOfKeys.size()) {
+				throw new IllegalArgumentException("Key has no successor!");
+			}
+			String nextKey = listOfKeys.get(indexOfNextKey);
+			return nextKey;
+		}
+		else {
+			throw new IllegalArgumentException("Key does not exist in hash table");
+		}
+	}
+	
+	/**
+	 * Returns the predecessor (key that comes before) of any given key
+	 * @param key
+	 * @return
+	 */
+	public String getPrevKey(String key) {
+		//Getting every key and sorting it
+		ArrayList<String> listOfKeys = new ArrayList<String>();
+		for (int i=0; i < numOfBuckets; i++) {	//iterating through entire array
+			HashNode head = bucketArray[i];
+			HashNode current = head;
+			while (current != null) {
+				String currentKey= current.getKey();
+				listOfKeys.add(currentKey);
+				current = current.next;
+			} 
+		} 
+		Collections.sort(listOfKeys);	//sorting
+		//Getting predecessor of given key
+		if (listOfKeys.contains(key)) {
+			int indexOfKey = listOfKeys.indexOf(key);
+			int indexOfPrevKey = indexOfKey - 1;
+			if (indexOfPrevKey == -1) {
+				throw new IllegalArgumentException("Key has no predecessor!");
+			}
+			String prevKey = listOfKeys.get(indexOfPrevKey);
+			return prevKey;
+		}
+		else {
+			throw new IllegalArgumentException("Key does not exist in hash table");
+		}
+	}
+	
+	/**
+	 * Returns the number of keys between key 1 and key 2 (not inclusive!)
+	 * @param k1
+	 * @param k2
+	 * @return
+	 */
+	public int getRangeOfKeys(String k1, String k2) {
+		//Getting every key and sorting it
+		ArrayList<String> listOfKeys = new ArrayList<String>();
+		for (int i=0; i < numOfBuckets; i++) {	//iterating through entire array
+			HashNode head = bucketArray[i];
+			HashNode current = head;
+			while (current != null) {
+				String currentKey= current.getKey();
+				listOfKeys.add(currentKey);
+				current = current.next;
+			} 
+		} 
+		Collections.sort(listOfKeys);	//sorting
+		//Getting the number of keys between k1 and k2
+		if (listOfKeys.contains(k1) && listOfKeys.contains(k2)) {	//checking if the hash table contains these keys
+			int indexOfk1 = listOfKeys.indexOf(k1);
+			int indexOfk2 = listOfKeys.indexOf(k2);
+			int diffOfKeys = (indexOfk2 - indexOfk1)-1;
+			//System.out.println(diffOfKeys);
+			return diffOfKeys;
+		} else {
+			throw new IllegalArgumentException("One or two of the keys does not exist in hash table!");
+		}
+	}	//end of getRangeOfKeys
+	
+	
+	
+	/**
+	 * Returns true if key exists in hash table. Otherwise, returns false.
+	 * @param key
+	 * @return
+	 */
+	public boolean keyExists(Integer key) {
+		String strKey = Integer.toString(key);	//converting int key to string
+		if (numOfPairs == 0) {	//no key-pair elements in hash table
+			return false;
+		}
+		if (key == null) {	//key passed is null
+			return false;
+		}
+		int bucketIndex = getBucketIndex(key);
+		HashNode head = bucketArray[bucketIndex];
+		HashNode current = head;
+		while (current != null) {
+			if (current.getKey().equals(strKey)) {
+				return true;
+			}
+			current = current.next;
+		}	//end of while
+		return false;
+	}	//end of keyExists method
+	
 	
 	//****************************************************
 	// MAIN METHOD
 	//****************************************************
 	public static void main(String[] args) {
 		myHashTable table = new myHashTable(10);
-		table.put(105, "value");
-		table.put(21, "Sana");
-		table.put(21, "Harry");	//(21,Sana) will get overwritten with this one
-		table.put(31, "Danish");
+		table.put("00123456", "value");
+		table.put("12345678", "Sana");
+		table.put("23456789", "Harry");	//(21,Sana) will get overwritten with this one
+		table.put("34567891", "Danish");
+		table.put("01123456", "hello");
 		System.out.println(table.numOfPairs());
 		System.out.println(table.isEmpty());
-		System.out.println(table.get(31));
-		System.out.println(table.get(21));
-		System.out.println(table.get(105));
-		System.out.println(table.get(90));
-		System.out.println(table.numOfPairs());
-		System.out.println(table.remove(31));	
-		System.out.println(table.numOfPairs());
-		table.put(12345678, "hello");
-		System.out.println(table.get(12345678));
+		table.put("12345678", "hello");
+		System.out.println(table.get("12345678"));
 		System.out.println(table.getAllKeys());
+		System.out.println(table.getNextKey("00123456"));
+		System.out.println(table.getPrevKey("34567891"));
+		System.out.println(table.getRangeOfKeys("00123456", "12345678"));
 	}
 	
 	
