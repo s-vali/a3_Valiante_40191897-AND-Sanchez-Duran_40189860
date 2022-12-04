@@ -243,17 +243,17 @@ public class ElasticAVL {
 	public Node getParent(String key, Node node) { //pass root
         Node parent = node;
         while (parent != null) {
-            if (parent.left == null || parent.right == null) { //external node, so key was not found
+            if (parent.getLeft() == null || parent.getRight() == null) { //external node, so key was not found
                return null;
             }
-            else if(parent.left.key.compareTo(key) == 0 || parent.right.key.compareTo(key) == 0) {
+            else if(parent.getLeft().getKey().compareTo(key) == 0 || parent.getRight().getKey().compareTo(key) == 0) {
             	break;
             }
             else {
-            	if(Long.parseLong(parent.key) < Long.parseLong(key))
-            		parent = parent.right;
+            	if(Long.parseLong(parent.getKey()) < Long.parseLong(key))
+            		parent = parent.getRight();
                 else
-                	parent = parent.left;
+                	parent = parent.getLeft();
             }   
         }
         return parent;
