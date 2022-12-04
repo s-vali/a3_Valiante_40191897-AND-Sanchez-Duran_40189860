@@ -36,7 +36,7 @@ public class ElasticERLDriver {
 				nbOfEntries++;
 			}
 			//test all methods
-			System.out.println("\nFinished creating appropriate ADT. Number of entries and size of ADT is: " + nbOfEntries);
+			System.out.println("\nFinished creating appropriate ADT (AVLTree) from 'data_set1.txt'. Number of entries and size of ADT is: " + nbOfEntries);
 			System.out.println("Displaying all keys:"); 
 			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
 			System.out.println("\nThe returned sequence is the array: " + erl.allKeys(erl));
@@ -66,7 +66,7 @@ public class ElasticERLDriver {
 				nbOfEntries++;
 			}
 			//test all methods
-			System.out.println("\nFinished creating appropriate ADT (AVLTree). Number of entries and size of ADT is: " + nbOfEntries);
+			System.out.println("\nFinished creating appropriate ADT (AVLTree) from 'data_set2.txt'. Number of entries and size of ADT is: " + nbOfEntries);
 			System.out.println("Displaying all keys:"); 
 			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
 			System.out.println("\nThe returned sequence is the array: " + erl.allKeys(erl));
@@ -95,7 +95,7 @@ public class ElasticERLDriver {
 				nbOfEntries++;
 			}
 			//test all methods
-			System.out.println("\nFinished creating appropriate ADT (AVLTree). Number of entries and size of ADT is: " + nbOfEntries);
+			System.out.println("\nFinished creating appropriate ADT (AVLTree) from 'data_set3.txt'. Number of entries and size of ADT is: " + nbOfEntries);
 			System.out.println("Displaying all keys:"); 
 			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
 			System.out.println("\nThe returned sequence is the array: " + erl.allKeys(erl));
@@ -124,7 +124,7 @@ public class ElasticERLDriver {
 				nbOfEntries++;
 			}
 			//test all methods
-			System.out.println("\nFinished creating appropriate ADT (AVLTree). Number of entries and size of ADT is: " + nbOfEntries);
+			System.out.println("\nFinished creating appropriate ADT (AVLTree) from 'data_set4.txt'. Number of entries and size of ADT is: " + nbOfEntries);
 			System.out.println("Displaying all keys:"); 
 			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
 			System.out.println("\nThe returned sequence is the array: " + erl.allKeys(erl));
