@@ -6,47 +6,7 @@ import java.util.Scanner;
 
 public class ElasticERLDriver {
 
-	public static void main(String[] args) {
-
-		/*
-		ElasticERL elastic = null;
-		Object obj = ElasticERL.setEINThreshold(6);
-		elastic = (ElasticERL)obj;
-		System.out.println(elastic.getSizeOfERL());
-		elastic.add(elastic, "33240013", "value");
-		elastic.add(elastic, "00255593", "value9");
-		elastic.add(elastic, "86960590", "value");
-		elastic.add(elastic, "87800000", "value@878");
-		elastic.add(elastic, "90099499", "value");
-		elastic.add(elastic, "70049505", "value");
-		*/
-		
-		//elastic.add(elastic, 901, "value"); 
-		/*
-		System.out.println();
-		elastic.allKeys(elastic);
-		System.out.println();
-		
-		System.out.println("\nValue retrieved from getValue(key): " + elastic.getValues(elastic, "87800000") + "\n");
-		System.out.println("Get next of key=900: " + elastic.nextKey(elastic, "86960590"));
-		System.out.println("\nKeys between 191 and 700: (Assume keys exist): " + elastic.rangeKey(elastic, "86960590", "00255593")); //IS RETURNING SIZE OF ADT WHEN THE KEYS DONT EXIST
-		System.out.println("Root of tree: " + elastic.avltree.getRoot().getKey());
-		System.out.println("Parent of key=87800000: " + elastic.prevKey(elastic, "87800000") + "\n");
-		System.out.println("Parent of key=33240013: " + elastic.prevKey(elastic, "33240013") + "\n");
-		System.out.println("\nGenerated key is: " + elastic.generate(elastic) + "\n"); //the size of the ElasticERLSize must be accurate 
-																			  //to the amount of elements inserted into the ADT																			  //to the amount of elements inserted into the ADT
-																			  //or else null pointer exception bc the index at that
-																			  //pt in the array is null
-		System.out.println();
-		elastic.remove(elastic, "86960590"); //Good for keys that don't exist
-		elastic.allKeys(elastic);
-		System.out.println("\nroot after delete 878: " + elastic.avltree.root.key);
-		System.out.println();
-		elastic.remove(elastic, "70049505");
-		elastic.allKeys(elastic);
-		System.out.println("\nroot after delete: " + elastic.avltree.root.key);
-		*/
-		
+	public static void main(String[] args) {	
 		/*
 		 * Print welcome message
 		 */
