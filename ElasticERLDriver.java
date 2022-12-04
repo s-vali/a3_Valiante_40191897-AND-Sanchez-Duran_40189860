@@ -83,16 +83,16 @@ public class ElasticERLDriver {
 			erl.remove(erl, "63537622");
 			System.out.println("Deleting the key 63537622... Displaying all keys: "); erl.allKeys(erl);
 			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
-			System.out.println("Generating a new non-existant key: " + erl.generate(erl));
+			System.out.println("Generating a new non-existent key: " + erl.generate(erl));
 			System.out.println("Getting the value at 90049726: " + erl.getValues(erl, "90049726"));
 			System.out.println("Root of AVL is: " + erl.getAvltree().getRoot().getKey() + ", right of root: " + erl.getAvltree().getRoot().getRight().getKey());
 			System.out.println("Next key of 78804726 is: " + erl.nextKey(erl, "78804726"));
 			System.out.println("Next key of 45241726 is: " + erl.prevKey(erl, "45241726"));
 			System.out.println("Determining the number of keys between the range [78804726 - 96652545]: " + erl.rangeKey(erl, "78804726", "96652545"));
 			
-						
+			
 			/*data_set2, read from file make ADT of size = 600*/
-			System.out.println();
+			System.out.println("--------------------------------------------------------------");
 			inFile = new Scanner(new FileInputStream("data_set2"));
 			erl = null;
 			o = ElasticERL.setEINThreshold(600);
@@ -106,11 +106,23 @@ public class ElasticERLDriver {
 				nbOfEntries++;
 			}
 			//test all methods
+			//test all methods
 			System.out.println("\nFinished creating appropriate ADT. Number of entries and size of ADT is: " + nbOfEntries);
-			erl.allKeys(erl);
+			System.out.println("Displaying all keys:"); 
+			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
+			System.out.println("The returned sequence is the array: " + erl.allKeys(erl));
+			erl.remove(erl, "08172280");
+			System.out.println("Deleting the key 08172280... Displaying all keys: "); erl.allKeys(erl);
+			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
+			System.out.println("Generating a new non-existent key: " + erl.generate(erl));
+			System.out.println("Getting the value at 22278157: " + erl.getValues(erl, "22278157"));
+			//System.out.println("Root of AVL is: " + erl.getAvltree().getRoot().getKey() + ", right of root: " + erl.getAvltree().getRoot().getRight().getKey());
+			//System.out.println("Next key of 78804726 is: " + erl.nextKey(erl, "78804726"));
+			//System.out.println("Next key of 45241726 is: " + erl.prevKey(erl, "45241726"));
+			//System.out.println("Determining the number of keys between the range [78804726 - 96652545]: " + erl.rangeKey(erl, "78804726", "96652545"));
 			
 			/*data_set3, read from file make ADT of size = 200*/
-			System.out.println();
+			System.out.println("--------------------------------------------------------------");
 			inFile = new Scanner(new FileInputStream("data_set3"));
 			erl = null;
 			o = ElasticERL.setEINThreshold(200);
@@ -128,7 +140,7 @@ public class ElasticERLDriver {
 			erl.allKeys(erl);
 			
 			/*data_set4, read from file make ADT of size = 800*/
-			System.out.println();
+			System.out.println("--------------------------------------------------------------");
 			inFile = new Scanner(new FileInputStream("data_set4"));
 			erl = null;
 			o = ElasticERL.setEINThreshold(800);
