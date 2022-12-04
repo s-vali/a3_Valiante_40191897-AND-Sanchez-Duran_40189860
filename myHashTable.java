@@ -196,7 +196,11 @@ public class myHashTable {
 			} //end of while
 		} //end of for-loop
 		Collections.sort(listOfKeys);
-		return listOfKeys;
+		for (String str : listOfKeys)
+	      { 		      
+	           System.out.println(str); 		
+	      }
+		return null;
 	}
 	
 	/**
