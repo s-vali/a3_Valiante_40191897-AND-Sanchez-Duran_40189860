@@ -156,6 +156,7 @@ public class ElasticERL_Driver {
 				nbOfEntries++;
 			}
 			//test all methods
+			System.out.println("Testing file \"data_set5\" with 1000 entries");
 			System.out.println("Getting value of key 79055514: "+erl.getValues(erl, "79055514"));
 			System.out.println("Getting all keys");
 			erl.getHashTable().getAllKeys();
@@ -183,6 +184,7 @@ public class ElasticERL_Driver {
 			}
 			//System.out.println(nbOfEntries);
 			//test all methods
+			System.out.println("Testing file \"EHITS_test_file2\" with 500 000 entries");
 			System.out.println("Getting value for 75341728: " + erl.getValues(erl, "75341728"));
 			//System.out.println("Getting all keys");
 			//erl.getHashTable().getAllKeys();
@@ -210,6 +212,7 @@ public class ElasticERL_Driver {
 			}
 			//System.out.println(nbOfEntries);
 			//test all methods
+			System.out.println("Testing file \"EHITS_test_file3\" with 1M entries");
 			System.out.println("Getting value for 51281754: " + erl.getValues(erl, "51281754"));
 			//System.out.println("Getting all keys");
 			//erl.getHashTable().getAllKeys();
