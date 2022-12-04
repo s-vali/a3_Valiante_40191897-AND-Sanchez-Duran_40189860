@@ -2,9 +2,12 @@
 public class ElasticAVL {
 
 	public class Node {
+		/*
+		 * INNER CLASS
+		 */
 		
 		/*
-		 * variables and constants
+		 * Variables and Constants
 		 */
 		String key;
 		int height;
@@ -13,14 +16,13 @@ public class ElasticAVL {
 		Node right;
 		
 		/*
-		 * constructor
+		 * Constructor
 		 */
 		public Node(String key, String value) {
 			this.left = null; //creating a new node always sets its left child to null
 			this.right = null; //creating a new node always sets its right child to null
 			this.key = key; //key passed is the key of the Node
-			this.value = value; //initialized to empty string because we do not know the values for each EIN
-			//height = 1; //one tree node has a height of one
+			this.value = value;
 		}
 		//This default constructor will act as the constructor for linked list in inorder traversal
 		public Node() {
@@ -30,7 +32,7 @@ public class ElasticAVL {
 		}
 		
 		/*
-		 *getters and setters
+		 *Getters and Setters
 		 */
 		public String getKey() { return key; }
 		public void setKey(String key) { this.key = key; }
@@ -45,14 +47,18 @@ public class ElasticAVL {
 	} //end of inner Node class
 	
 	/*
-	 * variables
+	 * OUTER CLASS
+	 */
+	
+	/*
+	 * Variables
 	 */
 	Node root;
 	Node[] sortedArray;
 	int count = 0; //needs to be set to zero (outside this file) after function inorderTraversal() is called
 	
 	/*
-	 * getters and setters
+	 * Getters and Setters
 	 */
 	public Node getRoot() { return root; }
 	public void setRoot(Node root) { this.root = root; }
@@ -70,6 +76,11 @@ public class ElasticAVL {
 		return node.getHeight();
 	}
 	
+	/**
+	 * Rotates 
+	 * @param y
+	 * @return Node
+	 */
 	public Node rotateNodeRight(Node y) {
 		Node x = y.getLeft();
 		Node z = x.getRight();
@@ -94,6 +105,11 @@ public class ElasticAVL {
 		return x;
 	}
 	
+	/**
+	 * Calculates the balance factor at the node
+	 * @param node
+	 * @return int
+	 */
 	public int balanceFactor(Node node) {
 		if(node == null) //a tree with no nodes has a balance factor of 0
 			return 0;
@@ -101,14 +117,17 @@ public class ElasticAVL {
 	}
 	
 	/**
-	 * Insert method into AVL Tree
+	 * Inserts a node into an AVL tree
+	 * @param nodeKey
+	 * @param node
+	 * @param value
+	 * @return Node
 	 */
 	public Node insert(String nodeKey, Node node, String value) { //pass ERL object, thus root of tree
 		long key = Long.parseLong(nodeKey);
 		//Insert node into tree regularly
 		if(node == null) { //if node is null, like root or external node, stopping case
 			Node nodeToAdd = new Node(nodeKey, value);
-			//nodeToAdd.setParent(node); //set parent of new node to be previous node run through
 			return nodeToAdd;
 		}
 		else if(key < Long.parseLong(node.getKey())) //binary insert
@@ -144,7 +163,11 @@ public class ElasticAVL {
 	}
 	
 	/**
-	 * Delete Method into AVL Tree
+	 * Deletes a node of the AVL tree
+	 * @param nodeKey
+	 * @param node
+	 * @param value
+	 * @return Node
 	 */
 	public Node deleteNode(Node node, String nodeKey) {
 		long key = Long.parseLong(nodeKey);
@@ -161,8 +184,7 @@ public class ElasticAVL {
             	Node temp = node.getRight();
 				while(temp.getLeft() != null) {
 					temp = temp.getLeft();
-				}
-					
+				}	
                 node.setKey(temp.getKey());
                 node.setRight(deleteNode(node.getRight(), node.getKey()));
             }
@@ -195,7 +217,11 @@ public class ElasticAVL {
 	}
 	
 	/**
-	 * Searching AVL Tree: Binary Search
+	 * Searches the AVL tree using binary search to search for
+	 * the given key
+	 * @param nodeKey
+	 * @param node
+	 * @return Node
 	 */
 	public Node searchAVL(String nodeKey, Node node) { //pass root in ElasticERL file as Node node
 		long key = Long.parseLong(nodeKey);
@@ -208,7 +234,11 @@ public class ElasticAVL {
 	}
 	
 	/**
-	 * Get parent
+	 * Returns the parent of the key as the node
+	 * by checking the contents of the current nodes children.
+	 * @param key
+	 * @param node
+	 * @return Node
 	 */
 	public Node getParent(String key, Node node) { //pass root
         Node parent = node;
@@ -230,7 +260,10 @@ public class ElasticAVL {
     }
 	
 	/**
-	 * Inorder Traversal of AVL Tree
+	 * Returns a sorted array created by an inorder traversal of the 
+	 * AVL tree.
+	 * @param node
+	 * @param size
 	 */
 	public void inorderTraversalAVL(Node node, int size) { //root of AVL tree will be passed
 		if(count == 0) { //count must be set to zero outside of the function, in ElasticERL file
@@ -238,7 +271,6 @@ public class ElasticAVL {
 		}
 		if(node != null) {
 			inorderTraversalAVL(node.getLeft(), size);
-			System.out.print(node.getKey() + "  ");
 			Node listNode = new Node(); //separate linked list form AVL tree will be created
 			listNode.setKey(node.getKey());
 			listNode.setValue(node.getValue());
@@ -247,12 +279,17 @@ public class ElasticAVL {
 			inorderTraversalAVL(node.getRight(), size);	
 		}
 	}
-	public void printArray() {
-		for(int i = 0; i > sortedArray.length; i++) {
-			System.out.print(sortedArray[i].getKey());
+	
+	/**
+	 * Displays the inorder traversal of the AVL tree. 
+	 * @param node
+	 * @param size
+	 */
+	public void displayAVL(Node node, int size) {
+		if(node != null) {
+			displayAVL(node.getLeft(), size);
+			System.out.print(node.getKey() + "  ");
+			displayAVL(node.getRight(), size);	
 		}
-	}
-
-	
-	
-}
+	}	
+} //end of class
