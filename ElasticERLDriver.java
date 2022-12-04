@@ -52,7 +52,7 @@ public class ElasticERLDriver {
 		 */
 		System.out.println("***********************************************************");
 		System.out.println("               Welcome to ELasticERL Driver ");
-		System.out.println("***********************************************************");
+		System.out.println("***********************************************************\n");
 		
 		/*
 		 * Read from each file and construct the appropriate ADT
@@ -77,20 +77,20 @@ public class ElasticERLDriver {
 			}
 			//test all methods
 			System.out.println("\nFinished creating appropriate ADT. Number of entries and size of ADT is: " + nbOfEntries);
-			System.out.println("Displaying all keys"); 
+			System.out.println("Displaying all keys:"); 
+			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
 			System.out.println("The returned sequence is the array: " + erl.allKeys(erl));
 			erl.remove(erl, "63537622");
-			System.out.println("Deleting the key 63537622... Showing all keys: "); erl.allKeys(erl);
+			System.out.println("Deleting the key 63537622... Displaying all keys: "); erl.allKeys(erl);
+			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
 			System.out.println("Generating a new non-existant key: " + erl.generate(erl));
 			System.out.println("Getting the value at 90049726: " + erl.getValues(erl, "90049726"));
 			System.out.println("Root of AVL is: " + erl.getAvltree().getRoot().getKey() + ", right of root: " + erl.getAvltree().getRoot().getRight().getKey());
 			System.out.println("Next key of 78804726 is: " + erl.nextKey(erl, "78804726"));
 			System.out.println("Next key of 45241726 is: " + erl.prevKey(erl, "45241726"));
 			System.out.println("Determining the number of keys between the range [78804726 - 96652545]: " + erl.rangeKey(erl, "78804726", "96652545"));
-			//methods: allKeys, delete, generate, getValyes, nextKey, prevKey, rangeKey
 			
-			//TRY DELETE AND THEN METHODS WITH THE ARRAYS TO SEE IF THEY STILL WORK
-			
+						
 			/*data_set2, read from file make ADT of size = 600*/
 			System.out.println();
 			inFile = new Scanner(new FileInputStream("data_set2"));
@@ -165,7 +165,7 @@ public class ElasticERLDriver {
 			/*
 			 * Print out message
 			 */
-			System.out.println("***********************************************************");
+			System.out.println("\n\n***********************************************************");
 			System.out.println("                  End of ELasticERL Driver ");
 			System.out.println("***********************************************************");
 		}
