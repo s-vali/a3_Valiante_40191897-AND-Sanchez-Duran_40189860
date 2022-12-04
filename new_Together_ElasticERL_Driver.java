@@ -165,7 +165,7 @@ public class ElasticERL_Driver {
 			System.out.println("Generating random number (not already in hash table): " + erl.generate(erl));
 			System.out.println("Getting next key of 79055514: " + erl.nextKey(erl,"79055514"));
 			System.out.println("Getting previous key of 79055514: " + erl.prevKey(erl,"79055514"));
-			//System.out.println("Getting range of 15131595 and 90511013: " + erl.rangeKey(erl,"15131595","90511013"));
+			System.out.println("Getting range of 15131595 and 90511013: " + erl.rangeKey(erl,"15131595","90511013"));
 			
 			/*EHITS_test_file2, read from file make ADT of size = 500000*/
 			System.out.println("-----------------------------------------------------------");
@@ -192,6 +192,7 @@ public class ElasticERL_Driver {
 			System.out.println("Generating random number (not already in hash table): " + erl.generate(erl));
 			System.out.println("Getting next key of 45241726: " + erl.nextKey(erl,"45241726"));
 			System.out.println("Getting previous key of 45241726: " + erl.prevKey(erl,"45241726"));
+			System.out.println("Getting range of 45241726 and 96652545: " + erl.rangeKey(erl,"45241726","96652545"));
 			
 			/*EHITS_test_file3, read from file make ADT of size = 1000000*/
 			System.out.println("-----------------------------------------------------------");
@@ -218,6 +219,7 @@ public class ElasticERL_Driver {
 			System.out.println("Generating random number (not already in hash table): " + erl.generate(erl));
 			System.out.println("Getting next key of 40912014: " + erl.nextKey(erl,"40912014"));
 			System.out.println("Getting previous key of 40912014: " + erl.prevKey(erl,"40912014"));
+			System.out.println("Getting range of 70164927 and 84629786: " + erl.rangeKey(erl,"70164927","84629786"));
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File could not be found! Program will exit. ");
