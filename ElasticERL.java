@@ -57,7 +57,13 @@ public class ElasticERL {
 	 * random 8 digit number between the two. If greater than 1000, a random 8 
 	 * digit number will be generated and searched for its existence in
 	 * the hash map. If it does not exist, it will be returned. 
-	 * Best case: 
+	 * 
+	 * If the size is greater than or equal to 1000, then the method will only consider the hash table object. 
+	 * Thus, a random number will be created and the function keyExists(k) will be called from the myHashTable class in order to ensure 
+	 * that the key is not already in the hash table. If the key is not in the hash table, it will return the newly generated number. 
+	 * Otherwise, it will continue to generate random numbers until it does one that is not already in the hash table. 
+	 * The keyExists(k) function has a time complexity of O(1) at best and O(n) at worst.
+	 * Best case: O(1)
 	 * Worst case: O(n)
 	 * 
 	 * @param elasticERLObj
@@ -107,7 +113,11 @@ public class ElasticERL {
 	 * by an inorder traversal of the AVL ADT. If greater than
 	 * 1000, the hash table will be looped through and a collections 
 	 * sort performed. 
-	 * Best case: 
+	 * 
+	 * If the size is greater than or equal to 1000, then the method will only consider the hash table object. 
+	 * Therefore, the allKeys(ElasticERL) function will call the allKeysInHash(ElasticERL) which, in turn, will call the getAllKeys() function from the myHashTable class. 
+	 * The getAllKeys() function has a time complexity of O(n) and iterates through the entire hash table in order to obtain all the keys and sort them.
+	 * Best case: O(n)
 	 * Worst case: O(n)
 	 * 
 	 * @param elasticERLObj
@@ -139,8 +149,13 @@ public class ElasticERL {
 	 * imbalance. If greater than 1000, the key will be hashed to
 	 * its correct location, and collisions will be handled through
 	 * separate chaining. 
+	 * 
+	 * If the size is greater than or equal to 1000, then the method will only consider the hash table object. 
+	 * Thus, the put(key, value) function is called from the myHashTable class. 
+	 * The put(key, value) function checks if the key is already in the hash table and if it is not, it will add the new key-value pair. 
+	 * If the key already exists in the hash table, the value will be overwritten with the new value. At best, the time complexity is O(1). At worst, the time complexity is O(n).
 	 * Best case: O(1)
-	 * Worst case: O(logn)
+	 * Worst case: O(n)
 	 * 
 	 * @param elasticERLObj
 	 * @param key
@@ -160,9 +175,12 @@ public class ElasticERL {
 	 * 1000, the removal will occur to the AVL ADT, in which any imbalance
 	 * caused by the deletion of the node in the tree will trigger a restructuring 
 	 * of the tree. 
-	 * HOW TO HASH MAP IS REMOVED
-	 * Best case: O(logn)
-	 * Worst case: 
+	 * If the size is greater than or equal to 1000, then the method will only consider the hash table object. 
+	 * Thus, the remove(key) function is called from the myHashTable class. 
+	 * The remove(key) function searches for the key that the user wants to remove and if it exists, it will remove the key-value pair from the hash table and return the value of the key that was removed. 
+	 * Otherwise, it will return null. At best, the time complexity is O(1). At worst, the time complexity is O(n).
+	 * Best case: O(1)
+	 * Worst case: O(n)
 	 * 
 	 * @param elasticERLObj
 	 * @param key
@@ -183,9 +201,11 @@ public class ElasticERL {
 	 * Return the value at the indicated key in the ADT. If the ERL
 	 * is less 1000, the method will utilize the AVL ADT binary search to
 	 * search for the node holding the given key and return its value. 
-	 * HASH MAP
-	 * Best case: O(logn)
-	 * Worst case: 
+	 * If the size is greater than or equal to 1000, then the method will only consider the hash table object. 
+	 * Thus, the get(key) function is called from the myHashTable class which returns the value(s) of the given key if the key exists.
+	 * Otherwise, get(key) returns null. At best, the time complexity is O(1). At worst, the time complexity is O(n).
+	 * Best case: O(1)
+	 * Worst case: O(n)
 	 * 
 	 * @param elasticERLObj
 	 * @param key
@@ -209,9 +229,12 @@ public class ElasticERL {
 	 * Returns the key of the successor of the key passed. If the 
 	 * size of the ERL is less than 1000, the right child of the 
 	 * current node matching the given key will be returned. 
-	 * HASH MAP
+	 * If the size is greater than or equal to 1000, then the method will only consider the hash table object. 
+	 * Thus, the getNextKey(key) function is called from the myHashTable class.
+	 * The function gets all the keys, sorts them and returns the successor key of the key passed to the function getNextKey(key). 
+	 * The time complexity of this is O(n).
 	 * Best case: O(logn)
-	 * Worst case: 
+	 * Worst case: O(n)
 	 * 
 	 * @param elasticERLObj
 	 * @param key
@@ -236,8 +259,14 @@ public class ElasticERL {
 	 * Returns the predecessor of the key passed. If the size of 
 	 * the ERL if less than 1000, the parent of the current node
 	 * matching the given key will be returned. 
+	 * 
+	 * If the size is greater than or equal to 1000, then the method will only consider the hash table object. 
+	 * Thus, the getPrevKey(key) function is called from the myHashTable class. 
+	 * The function gets all the keys, sorts them and returns the predecessor key of the key passed to the function getPrevKey(key). 
+	 * The time complexity of this is O(n).
+	 * 
 	 * Best case: O(logn)
-	 * Worst case: 
+	 * Worst case: O(n)
 	 * 
 	 * @param elasticERLObj
 	 * @param key
@@ -267,7 +296,11 @@ public class ElasticERL {
 	 * which will be accessed at the locations of the smaller value of the keys
 	 * and a counter incremented. The loop will stop when the larger key is reached
 	 * and the counter will be returned. The counter is inclusive. 
-	 * Best case: 
+	 * If the size is greater than or equal to 1000, then the method will only consider the hash table object. 
+	 * Thus, the getRangeOfKeys(k1, k2) function is called from the myHashTable class. 
+	 * The function gets all the keys, sorts them and returns the number of keys (not inclusive) between the two keys passed to the function getRangeOfKeys(k1, k2). 
+	 * The time complexity of this is O(n).
+	 * Best case: O(n)
 	 * Worst case: O(n)
 	 * 
 	 * @param elasticERLObj
