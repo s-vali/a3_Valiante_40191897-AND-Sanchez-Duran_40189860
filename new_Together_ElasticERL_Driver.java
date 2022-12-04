@@ -67,7 +67,7 @@ public class ElasticERL_Driver {
 				nbOfEntries++;
 			}
 			//test all methods
-			/*System.out.println("\nFinished creating appropriate ADT (AVLTree) from 'data_set2.txt'. Number of entries and size of ADT is: " + nbOfEntries);
+			System.out.println("\nFinished creating appropriate ADT (AVLTree) from 'data_set2.txt'. Number of entries and size of ADT is: " + nbOfEntries);
 			System.out.println("Displaying all keys:"); 
 			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
 			System.out.println("\nThe returned sequence is the array: " + erl.allKeys(erl));
@@ -80,7 +80,7 @@ public class ElasticERL_Driver {
 			System.out.println("Next key of 36195726 is: " + erl.nextKey(erl, "36195726"));
 			System.out.println("Previous key of 37028865 is: " + erl.prevKey(erl, "37028865"));
 			System.out.println("Determining the number of keys between the range [01276726 - 01741257]: " + erl.rangeKey(erl, "01276726", "01741257"));
-			*/
+			
 			
 			/*data_set3, read from file make ADT of size = 200*/
 			System.out.println("-----------------------------------------------------------");
@@ -139,7 +139,7 @@ public class ElasticERL_Driver {
 			System.out.println("Next key of 33285671 is: " + erl.nextKey(erl, "33285671"));
 			System.out.println("Previous key of 00576763 is: " + erl.prevKey(erl, "00576763"));
 			System.out.println("Determining the number of keys between the range [00225903 - 00576763]: " + erl.rangeKey(erl, "00225903", "00576763"));
-		*/
+			*/
 			
 			/*data_set5, read from file make ADT of size = 1000*/
 			System.out.println("-----------------------------------------------------------");
@@ -156,25 +156,16 @@ public class ElasticERL_Driver {
 				nbOfEntries++;
 			}
 			//test all methods
-			System.out.println(erl.getValues(erl, "79055514"));
-			System.out.println(erl.getHashTable().getAllKeys());
-			//System.out.println(erl.remove(erl, "61690863"));
+			System.out.println("Getting value of key 79055514: "+erl.getValues(erl, "79055514"));
+			System.out.println("Getting all keys");
+			erl.getHashTable().getAllKeys();
+			System.out.println("Removing 61690863");
 			erl.remove(erl, "61690863");	
-			System.out.println(erl.getValues(erl, "61690863"));
-			System.out.println("\nFinished creating appropriate ADT (AVLTree) from 'data_set4.txt'. Number of entries and size of ADT is: " + nbOfEntries);
-			System.out.println("Displaying all keys:"); 
-			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
-			System.out.println("\nThe returned sequence is the array: " + erl.allKeys(erl));
-			erl.remove(erl, "00508324");
-			System.out.println("Deleting the key 00508324... Displaying all keys: "); erl.allKeys(erl);
-			erl.getAvltree().displayAVL(erl.getAvltree().getRoot(), erl.getSizeOfERL());
-			System.out.println("Generating a new non-existent key: " + erl.generate(erl));
-			System.out.println("Getting the value at 00332454: " + erl.getValues(erl, "00332454"));
-			System.out.println("Root of AVL is: " + erl.getAvltree().getRoot().getKey() + ", right of root: " + erl.getAvltree().getRoot().getRight().getKey());
-			System.out.println("Next key of 33285671 is: " + erl.nextKey(erl, "33285671"));
-			System.out.println("Previous key of 00576763 is: " + erl.prevKey(erl, "00576763"));
-			System.out.println("Determining the number of keys between the range [00225903 - 00576763]: " + erl.rangeKey(erl, "00225903", "00576763"));
-			
+			System.out.println("Getting value of removed key: " +erl.getValues(erl, "61690863"));
+			System.out.println("Generating random number (not already in hash table): " + erl.generate(erl));
+			System.out.println("Getting next key of 79055514: " + erl.nextKey(erl,"79055514"));
+			System.out.println("Getting previous key of 79055514: " + erl.prevKey(erl,"79055514"));
+			//System.out.println("Getting range of 15131595 and 90511013: " + erl.rangeKey(erl,"15131595","90511013"));
 			
 			/*EHITS_test_file2, read from file make ADT of size = 500000*/
 			System.out.println("-----------------------------------------------------------");
@@ -190,17 +181,21 @@ public class ElasticERL_Driver {
 				erl.add(erl, line, value);
 				nbOfEntries++;
 			}
+			//System.out.println(nbOfEntries);
 			//test all methods
-			System.out.println("Getting value for 75341728" + erl.getValues(erl, "75341728"));
-			//System.out.println(erl.getHashTable().getAllKeys());
-			//System.out.println(erl.remove(erl, "61690863"));
+			System.out.println("Getting value for 75341728: " + erl.getValues(erl, "75341728"));
+			//System.out.println("Getting all keys");
+			//erl.getHashTable().getAllKeys();
 			System.out.println("Removing 35138726");
 			erl.remove(erl, "35138726");
-			System.out.println(erl.getValues(erl, "35138726"));
+			System.out.println("Getting value of removed key: " +erl.getValues(erl, "35138726"));
+			System.out.println("Generating random number (not already in hash table): " + erl.generate(erl));
+			System.out.println("Getting next key of 45241726: " + erl.nextKey(erl,"45241726"));
+			System.out.println("Getting previous key of 45241726: " + erl.prevKey(erl,"45241726"));
 			
 			/*EHITS_test_file3, read from file make ADT of size = 1000000*/
 			System.out.println("-----------------------------------------------------------");
-			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\EHITS_test_file2.txt"));
+			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\EHITS_test_file3.txt"));
 			erl = null;
 			o = ElasticERL.setEINThreshold(1000000);
 			erl = (ElasticERL)o;
@@ -212,13 +207,17 @@ public class ElasticERL_Driver {
 				erl.add(erl, line, value);
 				nbOfEntries++;
 			}
+			//System.out.println(nbOfEntries);
 			//test all methods
-			System.out.println("Getting value for 51281754" + erl.getValues(erl, "51281754"));
-			//System.out.println(erl.getHashTable().getAllKeys());
-			//System.out.println(erl.remove(erl, "61690863"));
+			System.out.println("Getting value for 51281754: " + erl.getValues(erl, "51281754"));
+			//System.out.println("Getting all keys");
+			//erl.getHashTable().getAllKeys();
 			System.out.println("Removing 70162601");
 			erl.remove(erl, "70162601");
-			System.out.println(erl.getValues(erl, "70162601"));
+			System.out.println("Getting value of removed key: "+ erl.getValues(erl, "70162601"));
+			System.out.println("Generating random number (not already in hash table): " + erl.generate(erl));
+			System.out.println("Getting next key of 40912014: " + erl.nextKey(erl,"40912014"));
+			System.out.println("Getting previous key of 40912014: " + erl.prevKey(erl,"40912014"));
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File could not be found! Program will exit. ");
