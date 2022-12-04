@@ -1,3 +1,5 @@
+package Assi3;
+
 import java.util.Random;
 
 import java.util.ArrayList;
@@ -278,7 +280,9 @@ public class ElasticERL {
 		long key1 = Long.parseLong(nodeKey1);
 		long key2 = Long.parseLong(nodeKey2);
 		int count = 0;
-		elasticERLObj.getAvltree().count = 0;
+		if (elasticERLObj.getAvltree() != null) {
+			elasticERLObj.getAvltree().count = 0;
+		}
 		if(elasticERLObj.getSizeOfERL() < 1000) {
 			//Run through array of inorder keys and increment counter
 			ElasticAVL tree = elasticERLObj.getAvltree();
