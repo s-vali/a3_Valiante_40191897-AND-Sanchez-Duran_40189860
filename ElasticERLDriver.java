@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ElasticERL_Driver {
+public class ElasticERLDriver {
 
 	public static void main(String[] args) {	
 		/*
