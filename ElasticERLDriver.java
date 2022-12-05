@@ -1,4 +1,4 @@
-package Assi3;
+//package Assi3;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class ElasticERLDriver {
 		try {
 	
 			/*data_set1, read from file make ADT of size = 20*/
-			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\data_set1.txt"));
+			inFile = new Scanner(new FileInputStream("data_set1"));
 			ElasticERL erl = null;
 			Object o = ElasticERL.setEINThreshold(20);
 			erl = (ElasticERL)o;
@@ -54,8 +54,9 @@ public class ElasticERLDriver {
 			
 			/*data_set2, read from file make ADT of size = 600*/
 			System.out.println("-----------------------------------------------------------");
-			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\data_set2.txt"));
+			inFile = new Scanner(new FileInputStream("data_set2"));
 			erl = null;
+			o = null;
 			o = ElasticERL.setEINThreshold(600);
 			erl = (ElasticERL)o;
 			nbOfEntries = 0;
@@ -84,8 +85,9 @@ public class ElasticERLDriver {
 			
 			/*data_set3, read from file make ADT of size = 200*/
 			System.out.println("-----------------------------------------------------------");
-			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\data_set3.txt"));
+			inFile = new Scanner(new FileInputStream("data_set3"));
 			erl = null;
+			o = null;
 			o = ElasticERL.setEINThreshold(200);
 			erl = (ElasticERL)o;
 			nbOfEntries = 0;
@@ -112,9 +114,10 @@ public class ElasticERLDriver {
 			System.out.println("Determining the number of keys between the range [31053414 - 33216297]: " + erl.rangeKey(erl, "31053414", "33216297"));
 			
 			/*data_set4, read from file make ADT of size = 800*/
-			/*System.out.println("-----------------------------------------------------------");
-			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\data_set4.txt"));
+			System.out.println("-----------------------------------------------------------");
+			inFile = new Scanner(new FileInputStream("data_set4"));
 			erl = null;
+			o = null;
 			o = ElasticERL.setEINThreshold(800);
 			erl = (ElasticERL)o;
 			nbOfEntries = 0;
@@ -139,12 +142,13 @@ public class ElasticERLDriver {
 			System.out.println("Next key of 33285671 is: " + erl.nextKey(erl, "33285671"));
 			System.out.println("Previous key of 00576763 is: " + erl.prevKey(erl, "00576763"));
 			System.out.println("Determining the number of keys between the range [00225903 - 00576763]: " + erl.rangeKey(erl, "00225903", "00576763"));
-			*/
+			
 			
 			/*data_set5, read from file make ADT of size = 1000*/
 			System.out.println("-----------------------------------------------------------");
-			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\data_set5.txt"));
+			inFile = new Scanner(new FileInputStream("data_set5"));
 			erl = null;
+			o = null;
 			o = ElasticERL.setEINThreshold(1000);
 			erl = (ElasticERL)o;
 			nbOfEntries = 0;
@@ -170,8 +174,9 @@ public class ElasticERLDriver {
 			
 			/*EHITS_test_file2, read from file make ADT of size = 500000*/
 			System.out.println("-----------------------------------------------------------");
-			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\EHITS_test_file2.txt"));
+			inFile = new Scanner(new FileInputStream("EHITS_test_file2.txt"));
 			erl = null;
+			o = null;
 			o = ElasticERL.setEINThreshold(500000);
 			erl = (ElasticERL)o;
 			nbOfEntries = 0;
@@ -184,7 +189,7 @@ public class ElasticERLDriver {
 			}
 			//System.out.println(nbOfEntries);
 			//test all methods
-			System.out.println("Testing file \"EHITS_test_file2\" with 500 000 entries");
+			System.out.println("Testing file \"EHITS_test_file2\" with 500,000 entries");
 			System.out.println("Getting value for 75341728: " + erl.getValues(erl, "75341728"));
 			//System.out.println("Getting all keys");
 			//erl.getHashTable().getAllKeys();
@@ -198,8 +203,9 @@ public class ElasticERLDriver {
 			
 			/*EHITS_test_file3, read from file make ADT of size = 1000000*/
 			System.out.println("-----------------------------------------------------------");
-			inFile = new Scanner(new FileInputStream("C:\\Users\\karin\\eclipse-workspace\\NEW_352\\EHITS_test_file3.txt"));
+			inFile = new Scanner(new FileInputStream("EHITS_test_file3.txt"));
 			erl = null;
+			o = null;
 			o = ElasticERL.setEINThreshold(1000000);
 			erl = (ElasticERL)o;
 			nbOfEntries = 0;

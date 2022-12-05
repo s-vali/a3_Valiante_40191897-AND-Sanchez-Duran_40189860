@@ -77,7 +77,7 @@ public class ElasticAVL {
 	}
 	
 	/**
-	 * Rotates 
+	 * Restructures AVL tree by rotating branch either right or left 
 	 * @param y
 	 * @return Node
 	 */
